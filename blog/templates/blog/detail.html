@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Shubham Pal</title>
+    <title>{{blog.title}}</title>
 
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -21,7 +21,7 @@
   <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{% url 'home' %}">Shubham Pal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -30,49 +30,21 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="https://twitter.com/shubhampal98">Twitter<span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#">Resume</a>
-                <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
               </div>
             </div>
           </nav>
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hi! Im Shubham Pal</h1>
-          <p class="lead text-muted">I am a Django Developer.</p>
-          <p>
-            <a href="mailto:shubhampal1898@gmail.com" class="btn btn-secondary my-2">Email Me</a>
-          </p>
-          <img src="{% static '42700150.png' %}" width=300>
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-          {% for jobs in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{jobs.image.url}}">
-                <div class="card-body">
-                  <p class="card-text">{{jobs.summary}}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
+      <div class="container">
+        <h1 class="text-center pt-3">{{blog.title}}</h1>
+        <p class="text-center">{{blog.pub_date}}</p>
+        <br>
+        <img class="image-fluid" src="{{blog.image.url}}">
+        <br>
+        <p>{{blog.body}}</p>
       </div>
-
     </main>
 
     <footer class="text-muted">

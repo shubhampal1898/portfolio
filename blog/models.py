@@ -14,3 +14,9 @@ class Blog(models.Model):
     pub_date = models.DateTimeField()
     image = models.ImageField(upload_to='media/')
     body = models.TextField()
+
+    def summary(self):
+        return self.body[0:100]
+    
+    def __str__(self):
+        return self.title
